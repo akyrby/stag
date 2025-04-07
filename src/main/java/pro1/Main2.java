@@ -1,6 +1,7 @@
 package pro1;
 
 import com.google.gson.Gson;
+
 import pro1.apiDataModel.ActionsList;
 
 public class Main2 {
@@ -13,6 +14,14 @@ public class Main2 {
         String json = Api.getActionsByDepartment(department,year);
         ActionsList actions= new Gson().fromJson(json, ActionsList.class);
 
-        return -1; // TODO 2.1: Vrať nejvyšší dosažený počet přihlášených studentů na jedné akci
+        // Action maxAction = actions.items.stream()
+        //     .max(Comparator.comparing(a -> a.personsCount))
+        //     .get();
+        //     return maxAction.personsCount; // TODO 2.1: Vrať nejvyšší dosažený počet přihlášených studentů na jedné akci
+
+        return actions.items
+            .stream()
+            .mapToLong(a -> a.personsCount)
+            .max().getAsLong(); // TODO 2.1: Vrať nejvyšší dosažený počet přihlášených studentů na jedné akci
     }
 }
