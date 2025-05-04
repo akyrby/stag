@@ -59,8 +59,8 @@ public class Main7 {
                 .filter(date -> date != null) // Remove null dates
                 .collect(Collectors.toCollection(TreeSet::new)); // Use TreeSet for uniqueness and sorting
 
-        // Log unique dates
-        System.out.println("Unique Dates: " + uniqueDates);
+
+
 
         // Convert the unique dates back to the desired format and join them
         return uniqueDates.stream()
